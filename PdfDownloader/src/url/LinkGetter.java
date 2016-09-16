@@ -38,7 +38,7 @@ public class LinkGetter {
             .replaceFirst("\">", "")
             .replaceFirst("\"[\\s]?target=\"[a-zA-Z_0-9]*", "");
         if (valid(link)) {
-          links.add(makeAbsolute(url, link));
+          links.add(link);
         }
       }
     } catch (MalformedURLException e) {

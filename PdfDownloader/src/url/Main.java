@@ -14,7 +14,7 @@ public class Main {
 	}
 	public static void main(String args[]) {
 		Scanner scan = new Scanner(System.in);
-		System.out.println("Skriv en url: ");
+		System.out.println("Skriv en url på hemsidan där du vill ladda ner alla pdf:er : ");
 		String myURL = scan.next();
 		List<URL> URLlist = new ArrayList<URL>();
 		try {
@@ -23,11 +23,15 @@ public class Main {
 			LinkGetter lg = new LinkGetter();
 			List<String> list = lg.getLinks(url.toString());
 			int i=1;
+			if(list.isEmpty()){
+				System.out.println("Inga pdf:er hittades");
+			}
 			for (String s : list) {
 				if (s.endsWith(".pdf")) {
 					URL u = new URL(s);
 					URLlist.add(u);
 				//	String name = u.toString();
+					System.out.println(url.getFile());
 					download(s,"file"+i+".pdf");
 					i++;
 				}
